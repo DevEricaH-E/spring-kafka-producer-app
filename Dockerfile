@@ -11,17 +11,3 @@ COPY --from=build /app/target/producer*.jar /app/producer.jar
 EXPOSE 8091
 ENTRYPOINT ["sh", "-c"]
 CMD ["java -jar app.jar"]
-
-FROM openjdk:8-jre-slim
-WORKDIR /app
-COPY --from=build /app/target/products*.jar /app/products.jar
-EXPOSE 8090
-ENTRYPOINT ["sh", "-c"]
-CMD ["java -jar app.jar"]
-
-FROM openjdk:8-jre-slim
-WORKDIR /app
-COPY --from=build /app/target/streamers*.jar /app/streamers.jar
-EXPOSE 8092
-ENTRYPOINT ["sh", "-c"]
-CMD ["java -jar app.jar"]
